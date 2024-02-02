@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="explore-content">
+
+    <ul class="feature-list" style="width: 60%;">
+        {% for drawing in drawings %}
+        <li>
+            <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                    <img src="{{ url_for('static', filename = drawing.image_path.replace('static/','')) }}" width="1602" height="903"
+                        loading="lazy" alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                    <div class="card-wrapper">
+                        <div class="card-tag">
+                            <a href="#" class="span hover-2">{{ drawing.title }}</a>
+                        </div>
+
+                        <div class="wrapper">
+                            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                            <span class="span">{{drawing.hours_drawed}} hours drawed</span>
+                        </div>
+                    </div>
+
+                    <h3 class="headline headline-3">
+                        <a href="#" class="card-title hover-2">
+                            {{drawing.describe}}
+                        </a>
+                    </h3>
+
+                    <div class="card-wrapper">
+
+                        <div class="profile-card">
+                            <img src="{{ url_for('static', filename = 'images/author-1.png') }}" width="48" height="48"
+                                loading="lazy" alt="Mustafa" class="profile-banner">
+
+                            <div>
+                                <p class="card-title">Mustafa</p>
+                                <p class="card-subtitle">25 July 2023</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="card-btn">Details</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endblock body %}

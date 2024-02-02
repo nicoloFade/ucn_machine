@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% include "navbar.html" %}
+
+<div style="margin:auto; width: 75%;">
+
+    <h1 style="margin-top: 100px;">Add New Drawing</h1>
+    <hr>
+
+
+    <div class="flex" style="justify-content: space-between;">
+
+        <form class="form-addDrawings" enctype="multipart/form-data" method="post" style="width: 50%; height: 100%;">
+
+            <p class="title-addDrawings">Add Drawing </p>
+
+            <label>
+                <input class="input-addD" name="title" type="text" required="">
+                <span>Title</span>
+            </label>
+
+            <label>
+                <input class="input-addD" name="describe" type="text" placeholder="" required="">
+                <span>Describe</span>
+            </label>
+
+            <label>
+                <!-- <input class="input-addD" name="category" type="text" placeholder="" required="">
+                <span>Category</span> -->
+
+                <input class="input-addD" list="categories" name="category" id="category" placeholder="Category"
+                    required="">
+                <datalist id="categories">
+                    <option value="Machine">
+                    <option value="Gun">
+                    <option value="Defense">
+                    <option value="Random Parts">
+                    <option value="Practice Parts">
+                    <option value="Industry">
+                    <option value="CNC Parts">
+                    <option value="Structure">
+                </datalist>
+            </label>
+
+            <label>
+                <input class="input-addD" name="hours_drawed" type="text " placeholder="" required="">
+                <span>Hours Drawed</span>
+            </label>
+
+            <label>
+                <input class="input-addD" name="file" type="file" accept="image/*" required="">
+                <span>Image</span>
+            </label>
+
+            <div class="flex">
+                <label>
+                    <input class="input-addD" name="carousel_img1" type="file" accept="image/*">
+                    <span>Images For Carousel</span>
+                </label>
+                <label>
+                    <input class="input-addD" name="carousel_img2" type="file" accept="image/*">
+                    <span>Images For Carousel</span>
+                </label>
+                <label>
+                    <input class="input-addD" name="carousel_img3" type="file" accept="image/*">
+                    <span>Images For Carousel</span>
+                </label>
+            </div>
+
+
+
+            <div class="flex">
+                <input type="checkbox" style="width: 20px;" name="show_features" id="show_features">
+                <label for="show_features" style="font-size: 16px;">Show in features</label>
+            </div>
+            <div class="flex">
+                <input type="checkbox" style="width: 20px;" name="show_popular" id="show_popular">
+                <label for="show_popular" style="font-size: 16px;">Show in populars</label>
+            </div>
+
+            <button class="submit">Submit</button>
+
+        </form>
+
+
+
+        <a href="#" class="slider-card" style="border-radius: 10px; margin: 10px; height: 90%;">
+
+            <img src="{{url_for('static', filename = 'images/technical-drawing-pattern1.jpg')}}">
+
+            <div class="slider-content">
+                <span class="slider-title">ID</span>
+                <p class="slider-subtitle">Title</p>
+            </div>
+        </a>
+
+        <div class="explore-content" style="width: 25%; height: 100%; margin: 10px;">
+            <div class="card feature-card">
+
+                <img src="{{url_for('static', filename = 'images/technical-drawing-pattern.jpg')}}" style="width: 100%;"
+                    alt="">
+
+                <div class="card-content">
+
+                    <div class="card-wrapper">
+                        <div class="card-tag">
+                            <a href="#" class="span hover-2">Title</a>
+                        </div>
+
+                        <div class="wrapper">
+                            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                            <span class="span">? hours drawed</span>
+                        </div>
+                    </div>
+
+                    <h3 class="headline headline-3">
+                        <a href="#" class="card-title hover-2">
+                            Describe .............................
+                        </a>
+                    </h3>
+
+                    <div class="card-wrapper">
+
+                        <div class="profile-card">
+                            <img src="{{ url_for('static', filename = 'images/author-1.png') }}" width="48" height="48"
+                                loading="lazy" alt="Mustafa" class="profile-banner">
+
+                            <div>
+                                <p class="card-title">Mustafa</p>
+                                <p class="card-subtitle">25 July 2023</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="card-btn">Details</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock body %}

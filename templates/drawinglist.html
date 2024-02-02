@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<h1 class="container" style="margin-top: 100px; text-align: center;">Drawing List</h1>
+<hr class="container">
+
+
+<div class="container">
+
+    <table cellspacing="0" style="width: 100%; text-align: center;" class="table_main">
+        <thead class="table_head">
+            <tr>
+                <th class="text-muted" scope="col">ID</th>
+                <th class="text-light" scope="col">Title</th>
+                <th class="text-light" scope="col">Describe</th>
+                <th class="text-light" scope="col">Category</th>
+                <th class="text-light" scope="col">Hours Drawed</th>
+                <th class="text-light" scope="col">Show Feat.</th>
+                <th class="text-light" scope="col">Show Pop.</th>
+                <th class="text-light" scope="col"></th>
+                <th class="text-light" scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody class="table_body">
+            {% for drawing in drawings %}
+            <tr class="tr_hover">
+                <th scope="row">{{ drawing.ID }}</th>
+                <td><a class="tdA" href="">{{ drawing.title }}</a></td>
+                <td>{{ drawing.describe }}</td>
+                <td>{{ drawing.category }}</td>
+                <td>{{ drawing.hours_drawed }}</td>
+                <td>{{ drawing.show_features }}</td>
+                <td>{{ drawing.show_popular }}</td>
+                <td><a href="/update/{{drawing.ID}}"><button class="btn_tdUD">Update</button></a></td>
+                <td><a href="/delete/{{drawing.ID}}"><button
+                            onclick="alert('Çizim çöp kutusuna taşındı. Oradaki silme işlemi kalıcıdır !!!')"
+                            class="btn_tdUD delll">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock body %}

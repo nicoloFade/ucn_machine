@@ -1,0 +1,51 @@
+<header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="{{ url_for('static', filename = 'images/logo.svg') }}" width="150" height="auto" alt="logo">
+
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <ul class="navbar-list">
+
+          <li>
+            <a href="/" class="navbar-link hover-1" data-nav-toggler>Home</a>
+          </li>
+
+          <li>
+            <a href="/explore" class="navbar-link hover-1" data-nav-toggler>Explore</a>
+          </li>
+
+          <li>
+            <a href="/contact" class="navbar-link hover-1" data-nav-toggler>Contact</a>
+          </li>
+
+        </ul>
+
+        <p class="copyright-text">
+          Copyright 2023 © Emirhan Keskin - Personal Blog Template.
+          Developed byKeskinn
+        </p>
+
+      </nav>
+
+      <a href="#" class="btn btn-primary">More</a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+      
+
+    </div>
+
+    {% if session["logged_in"] == True %}
+
+      <a href="/dashboard" style="margin-left: 150px; position: absolute;">Dashboard</a>
+
+      <a href="/logout" style="margin-left: 50px; position: absolute;">Çıkış Yap</a>
+
+    {% endif %}
+  </header>

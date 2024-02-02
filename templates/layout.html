@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% block head %}
+  
+  {% endblock head %}
+
+  <title>UCN Drawings | Personal Blog</title>
+
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+  <link rel="preload" as="image" href="./assets/images/pattern-2.svg">
+  <link rel="preload" as="image" href="./assets/images/pattern-3.svg">
+
+</head>
+
+<body>
+
+  {% include "navbar.html" %}
+
+  {% block body %}
+  <section class="hero" id="home" aria-label="home">
+    <div class="hero-banner">
+
+
+
+      <img src="{{ url_for('static', filename = 'images/pattern-2.svg') }}" width="27" height="26" alt="shape"
+        class="shape shape-1">
+
+      <img src="{{ url_for('static', filename = 'images/pattern-3.svg') }}" width="27" height="26" alt="shape"
+        class="shape shape-2">
+
+    </div>
+
+    <img src="{{ url_for('static', filename = 'images/shadow-1.svg') }}" width="500" height="800" alt=""
+      class="hero-bg hero-bg-1">
+
+    <img src="{{ url_for('static', filename = 'images/shadow-2.svg') }}" width="500" height="500" alt=""
+      class="hero-bg hero-bg-2">
+
+    </div>
+  </section>
+
+  {% endblock body %}
+
+  
+</body>

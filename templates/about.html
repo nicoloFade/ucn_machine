@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<section class="about_section">
+  <div class="image_about">
+    <img src="{{url_for('static', filename = 'images/aboutusimg.png')}}">
+  </div>
+
+  <div class="content_about">
+    <h2>About Me</h2>
+    <span></span>
+    <p>I'm working on a defense ındustry. I making technical drawings. And i want to share these in my basic blog. And these are my skills: 
+    </p>
+    <ul class="links">
+      <li><a href="#">solidwors</a></li>
+      <div class="vertical-line"></div>
+      <li><a href="#">autocad</a></li>
+      <div class="vertical-line"></div>
+      <li><a href="#">siemens nx</a></li>
+      
+    </ul>
+    <ul class="icons">
+      <li>
+        <i class="fa fa-twitter"></i>
+      </li>
+      <li>
+        <i class="fa fa-facebook"></i>
+      </li>
+      <li>
+        <i class="fa fa-github"></i>
+      </li>
+      <li>
+        <i class="fa fa-pinterest"></i>
+      </li>
+    </ul>
+  </div>
+
+  
+
+</section><br><br>
+
+<img src="{{ url_for('static', filename = 'images/shadow-1.svg') }}" width="500" height="800" alt=""
+            class="hero-bg hero-bg-1">
+
+
+
+<img src="{{ url_for('static', filename = 'images/shadow-3.svg') }}" width="400" height="1500" loading="lazy"
+          alt="" class="feature-bg">
+
+{% include "footer.html" %}
+
+
+{% endblock body %}

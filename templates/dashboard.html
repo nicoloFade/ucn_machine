@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+
+
+{% block body %}
+{% include "navbar.html" %}
+
+<div class="container">
+    <h1 style="margin-top: 100px; text-align: center;">Admin Control Panel</h1>
+
+    <hr>
+
+    <a href="/addDrawings" class="notia">
+        <div class="notification">
+            <div class="notiglow"></div>
+            <div class="notiborderglow"></div>
+            <div class="notititle">Add New Drawing</div>
+            <div class="notibody">New drawings for features, explore or topics. You can design it here.</div>
+        </div>
+    </a>
+
+    <a href="/drawingList" class="notia">
+        <div class="notification">
+            <div class="notiglow"></div>
+            <div class="notiborderglow"></div>
+            <div class="notititle">Drawings</div>
+            <div class="notibody">Show all drawings in list. For designing usefully.</div>
+        </div>
+    </a>
+
+    <a href="#" class="notia">
+        <div class="notification">
+            <div class="notiglow"></div>
+            <div class="notiborderglow"></div>
+            <div class="notititle">Mesaages Inbox</div>
+            <div class="notibody">Messages of users using the contact section are displayed here.</div>
+        </div>
+    </a>
+
+    <a href="/deletedList" class="notia">
+        <div class="notification">
+            <div class="notiglow"></div>
+            <div class="notiborderglow"></div>
+            <div class="notititle">Deleted Drawings</div>
+            <div class="notibody">Show all deleted drawings in list. You can return them.</div>
+        </div>
+    </a>
+
+</div>
+
+
+
+
+
+
+{% endblock body %}

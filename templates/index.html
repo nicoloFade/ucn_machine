@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>UCN Drawings | Personal Blog</title>
+
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+  <link rel="preload" as="image" href="./assets/images/pattern-2.svg">
+  <link rel="preload" as="image" href="./assets/images/pattern-3.svg">
+
+</head>
+
+<body id="top">
+
+  {% include "navbar.html" %}
+
+  <main>
+    <article>
+
+      <section class="hero" id="home" aria-label="home">
+        <div class="container">
+
+          <div class="hero-content">
+
+            <p class="hero-subtitle">Hello !</p>
+
+            <h1 class="headline headline-1 section-title">
+              I'm <span class="span">Mustafa Uçan</span>
+            </h1>
+
+            <p class="hero-text">
+              I use programs like Solidwors, Autocad, Siemens NX etc. And I like drawing 3D technical machine parts, CNC
+              parts
+              or anything else wants technical drawing. And I would like to share these with you. If you like my
+              drawings
+              you can support me.
+            </p>
+
+            <div class="input-wrapper">
+
+              <input type="email" name="email_address" placeholder="Type your message" required class="input-field"
+                autocomplete="off">
+
+              <button class="btn btn-primary">
+                <span class="span">Contact</span>
+
+                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="hero-banner">
+
+            <img src="{{ url_for('static', filename = 'images/hero-banner.png') }}" width="327" height="490"
+              alt="Engine Drawing" class="w-100">
+
+            <img src="{{ url_for('static', filename = 'images/pattern-2.svg') }}" width="27" height="26" alt="shape"
+              class="shape shape-1">
+
+            <img src="{{ url_for('static', filename = 'images/pattern-3.svg') }}" width="27" height="26" alt="shape"
+              class="shape shape-2">
+
+          </div>
+
+          <img src="{{ url_for('static', filename = 'images/shadow-1.svg') }}" width="500" height="800" alt=""
+            class="hero-bg hero-bg-1">
+
+          <img src="{{ url_for('static', filename = 'images/shadow-2.svg') }}" width="500" height="500" alt=""
+            class="hero-bg hero-bg-2">
+
+
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #TOPICS
+      -->
+
+      <section class="topics" id="topics" aria-labelledby="topic-label">
+        <div class="container">
+
+          <div class="card topic-card">
+
+            <div class="card-content">
+
+              <h2 class="headline headline-2 section-title card-title" id="topic-label">
+                New Drawings
+              </h2>
+
+              <p class="card-text">
+                You can see myMachine Parts featured and new drawings in here.
+              </p>
+
+              <div class="btn-group">
+                <button class="btn-icon" aria-label="previous" data-slider-prev>
+                  <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+                </button>
+
+                <button class="btn-icon" aria-label="next" data-slider-next>
+                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                </button>
+              </div>
+
+            </div>
+
+            <div class="slider" data-slider>
+              <ul class="slider-list" data-slider-container>  
+
+                {% for drawing in drawings %}
+
+                {% if drawing.show_features == True %}
+                <li class="slider-item">
+                  <a href="details/{{drawing.ID}}" class="slider-card">
+
+                    <figure class="slider-banner img-holder" style="--width: 507; --height: 618;">
+                      <img src="{{ url_for('static', filename = drawing.image_path.replace('static/','') ) }}" width="507" height="618"
+                        loading="lazy" alt="Sport" class="img-cover">
+                    </figure>
+
+                    <div class="slider-content">
+                      <span class="slider-title">ID: {{drawing.ID}}</span>
+                      <p class="slider-subtitle">{{drawing.title}}</p>
+                    </div>
+
+                  </a>
+                </li>
+
+                {% else %}
+                {% endif %}
+
+                {% endfor %}
+
+
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- 
+        - #FEATURED POST
+      -->
+
+      <section class="section feature" aria-label="feature" id="featured">
+        <div class="container">
+
+          <h2 class="headline headline-2 section-title">
+            <span class="span">Popular</span>
+          </h2>
+
+          <p class="section-text">
+            Featured and most liked drawings.
+          </p>
+
+          <ul class="feature-list">
+
+            {% for drawing in drawings %}
+
+            {% if drawing.show_popular %}
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="{{ url_for('static', filename = drawing.image_path.replace('static/','') ) }}" width="1602" height="903"
+                    loading="lazy" alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">{{ drawing.title }}</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">{{drawing.hours_drawed}} hours drawed</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="#" class="card-title hover-2">
+                      {{drawing.describe}}
+                    </a>
+                  </h3>
+
+                  <div class="card-wrapper">
+
+                    <div class="profile-card">
+                      <img src="{{ url_for('static', filename = 'images/author-1.png') }}" width="48" height="48"
+                        loading="lazy" alt="Mustafa" class="profile-banner">
+
+                      <div>
+                        <p class="card-title">Mustafa</p>
+                        <p class="card-subtitle">25 July 2023</p>
+                      </div>
+                    </div>
+
+                    <a href="#" class="card-btn">Details</a>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+            {% else %}
+            {% endif %}
+
+            {% endfor %}
+
+          </ul>
+
+          <a href="explore" class="btn btn-secondary">
+            <span class="span">Show More Posts</span>
+
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
+
+        </div>
+
+        <img src="{{ url_for('static', filename = 'images/shadow-3.svg') }}" width="500" height="1500" loading="lazy"
+          alt="" class="feature-bg">
+
+      </section>
+
+
+
+
+
+
+      </div>
+
+      </div>
+      </section>
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+  {% include "footer.html" %}
+  
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+  </a>
+
+
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
